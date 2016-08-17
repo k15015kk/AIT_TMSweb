@@ -1,0 +1,46 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    background: #212121;
+    padding: 8px;
+}
+
+div.title {
+    width: 100%;
+}
+
+#titleText {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 21px;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    display: table-cell;
+    font-size: 21px;
+    width: calc(100vw/3);
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+}
+
+#item001 {
+    background: #d32f2f;
+}
+
+#item002 {
+    background: #1976d2;
+}
+
+#item003 {
+    background: #388e3c;
+}
