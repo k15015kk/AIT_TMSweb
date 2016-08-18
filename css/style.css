@@ -9,7 +9,7 @@ header{
 }
 
 div.title {
-    width: 100%;
+    width: 100vw;
 }
 
 #titleText {
@@ -17,6 +17,8 @@ div.title {
     margin: 0;
     color: #fff;
     font-size: 21px;
+    position: relative;
+    left: 64px;
 }
 
 ul{
@@ -43,4 +45,53 @@ li{
 
 #item003 {
     background: #388e3c;
+}
+
+div.displayArea {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    color: #fff;      
+}
+
+div.area {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+
+#infomationArea {
+    background: #212121;
+    padding: 0;
+    margin: 0;
+    width: 70vw;    
+}
+
+
+#place {
+    font-size: 34px;
+    padding: 5px;
+    margin: 0;
+}
+
+#time {
+    font-size: 21px;
+    padding: 5px;
+    margin: 0;
+}
+
+#valueArea {
+    background: #d32f2f;
+    padding: 0;
+    margin: 0;
+    width: 20vw;  
+}
+
+#value {
+    font-size: 55px;
+    padding: 5px;
+    text-align: center;
+    margin: 0;
 }
