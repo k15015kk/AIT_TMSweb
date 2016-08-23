@@ -68,10 +68,10 @@ li{
 }
 
 div.displayArea {
-    padding-left: 10vw;
-    padding-right: 10vw;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     color: #fff;      
 }
 
