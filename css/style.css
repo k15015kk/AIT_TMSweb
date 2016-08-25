@@ -78,6 +78,9 @@ div.displayArea {
 div.area {
     display: table-cell;
     vertical-align: middle;
+    border: solid;
+    border-color: #212121;
+    border-width: 5px;
 }
 
 #infomationArea {
