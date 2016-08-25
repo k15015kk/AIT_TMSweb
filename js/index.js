@@ -166,6 +166,7 @@ $(function(){
 		$('#item002').css('background','#bdbdbd');
 		$('#item003').css('background','#bdbdbd');
 		$('#value').text(dataList[dataList.length-2][2]);
+		item001BackGroundColor();
 		
 	});
 
@@ -175,6 +176,7 @@ $(function(){
 		$('#item001').css('background','#bdbdbd');
 		$('#item003').css('background','#bdbdbd');
 		$('#value').text(dataList[dataList.length-2][3]);
+		item002BackGroundColor();
 	});
 
 	$('#item003').click(function() {
@@ -182,7 +184,8 @@ $(function(){
 		$(this).css('background','#4CAF50');
 		$('#item001').css('background','#bdbdbd');
 		$('#item002').css('background','#bdbdbd');
-		$('#value').text(dataList[dataList.length-2][1]);        
+		$('#value').text(dataList[dataList.length-2][1]);
+		item003BackGroundColor();
 	});
 
 	$('#display001').hover(function() {
