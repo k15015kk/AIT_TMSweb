@@ -43,7 +43,7 @@
 							$date = new DateTime();
 							$date->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 
-							$filepath = 'path';
+							$filepath = 'http://172.16.0.210/'.$date->format('Ymd').".csv";
 							if (($fp = fopen($filepath, "r")) === false) {
 								echo 'error';
 							}
