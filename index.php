@@ -33,11 +33,11 @@
 		</nav>
 		<main>
 			<div class="displayArea" id="display001">
-				<div class="area" id="infomation001">
-					<p class="textArea" id="place">４号館別館３１０</p> 
+				<div class="area" id="left001">
+					<p class="pliceArea" id="place001">４号館別館３１０</p> 
 				</div>
-				<div class="area" id="value001">
-					<p class="valueArea" id="value">
+				<div class="area" id="right001">
+					<p class="valueArea" id="value001">
 						<?php
 							date_default_timezone_set('Asia/Tokyo');
 							$date = new DateTime();
@@ -49,19 +49,49 @@
 							}
 
 							setlocale(LC_ALL, 'ja_JP');
-							$dataArray = array();
+							$dataArray01 = array();
 
 							$i=0;
 							while (($line = fgetcsv($fp)) !== FALSE) {
 								mb_convert_variables('UTF-8', 'sjis-win', $line);
 
-								$dataArray = $line;
+								$dataArray01 = $line;
 								$i++;
 							}
 
 							fclose($fp);
 
-							echo $dataArray[2];
+							echo $dataArray01[2];
+						?>
+					</p>
+				</div>
+			</div>
+			<div class="displayArea" id="display002">
+				<div class="area" id="left002">
+					<p class="pliceArea" id="place002">４号館別館３１０</p> 
+				</div>
+				<div class="area" id="right002">
+					<p class="valueArea" id="value002">
+						<?php
+							$filepath = 'http://172.16.0.210/'.$date->format('Ymd').".csv";
+							if (($fp = fopen($filepath, "r")) === false) {
+								echo 'error';
+							}
+
+							setlocale(LC_ALL, 'ja_JP');
+							$dataArray02 = array();
+
+							$i=0;
+							while (($line = fgetcsv($fp)) !== FALSE) {
+								mb_convert_variables('UTF-8', 'sjis-win', $line);
+
+								$dataArray02 = $line;
+								$i++;
+							}
+
+							fclose($fp);
+
+							echo $dataArray02[2];
 						?>
 					</p>
 				</div>
@@ -69,7 +99,8 @@
 		</main>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
-			var array = <?php echo json_encode($dataArray, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			var array01 = <?php echo json_encode($dataArray01, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			var array02 = <?php echo json_encode($dataArray02, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;			
 			var redColorList = ['#FFEBEE','#FFCDD2','#EF9A9A','#E57373','#EF5350','#F44336','#E53935','#D32F2F','#C62828','#B71C1C'];
 			var blueColorList = ['#E3F2FD','#BBDEFB','#90CAF9','#64B5F6','#42A5F5','#2196F3','#1E88E5','#1976D2','#1565C0','#0D47A1'];
 			var greenColorList = ['#E8F5E9','#C8E6C9','#A5D6A7','#81C784','#66BB6A','#4CAF50','#43A047','#388E3C','#2E7D32','#1B5E20'];

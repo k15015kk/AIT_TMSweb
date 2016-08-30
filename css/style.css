@@ -66,6 +66,7 @@ li{
 div.displayArea {
     margin-left: 10vw;
     margin-right: 10vw;
+    width: 80vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
     color: #fff;
@@ -73,30 +74,32 @@ div.displayArea {
 
 div.area {
     vertical-align: middle;
+    display: table-cell;
     border: solid;
     border-color: #212121;
     border-width: 5px;
-    display: table-cell;
 }
 
-#infomation001 {
+#left001,
+#left002 {
     background: #212121;
-    width: 50vw;    
+    width: 50vw;
 }
 
 
-#place {
+p.pliceArea {
     font-size: 34px;
-    padding: 8px;
+    padding: 5px;
     text-align: center;
 }
 
-#value001 {
+#right001,
+#right002 {
     background: #d32f2f;
-    width: 30vw;  
+    width: 30vw; 
 }
 
-#value {
+p.valueArea {
     font-size: 55px;
     padding: 5px;
     text-align: center;
@@ -122,20 +125,26 @@ div.area {
         font-size: 21px;
     }
 
+    div.displayArea {
+        border: solid;
+        border-color: #212121;
+        border-width: 5px;
+    }
+
     div.area {
         display: block;
+        border: none;
     }
 
-    #infomation001 {
+    #left001,
+    #left002,
+    #right001,
+    #right002 {
         width: 80vw;
     }
 
-    #place {
+    p.pliceArea {
         font-size: 21px;
-        width: 80vw;
-    }
-
-    #value001 {
-        width: 80vw;
+        padding: 5px;
     }
 }

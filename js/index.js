@@ -156,7 +156,8 @@ $(function(){
 		$(this).css('background','#d32f2f');
 		$('#item002').css('background','#bdbdbd');
 		$('#item003').css('background','#bdbdbd');
-		$('#value').text(array[2]);
+		$('#value001').text(array01[2]);
+		$('#value002').text(array02[2]);		
 		item001BackGroundColor();
 		
 	});
@@ -166,7 +167,8 @@ $(function(){
 		$(this).css('background','#2196F3');
 		$('#item001').css('background','#bdbdbd');
 		$('#item003').css('background','#bdbdbd');
-		$('#value').text(array[3]);		
+		$('#value001').text(array01[3]);
+		$('#value002').text(array02[3]);	
 		item002BackGroundColor();
 	});
 
@@ -175,11 +177,12 @@ $(function(){
 		$(this).css('background','#4CAF50');
 		$('#item001').css('background','#bdbdbd');
 		$('#item002').css('background','#bdbdbd');
-		$('#value').text(array[1]);		
+		$('#value001').text(array01[1]);
+		$('#value002').text(array02[1]);		
 		item003BackGroundColor();
 	});
 
-	$('#display001').hover(function() {
+	$('.displayArea').hover(function() {
 		$(this).fadeTo("fast",0.67);
 	},function() {
 		$(this).fadeTo("fast",1.0);        
