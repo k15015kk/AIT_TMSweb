@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
-		<title>愛工大温度管理システム</title>
+		<title>シス研温度管理システム</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="css/style.css" rel="stylesheet">
@@ -10,7 +10,7 @@
 	<body>
 		<header class="topheader">
 			<div class="title" id="title001">
-				<p id="titleText">愛工大温度管理システム</p>
+				<p id="titleText">シス研温度管理システム</p>
 			</div>
 		</header>
 		<nav>
