@@ -1,6 +1,4 @@
 var flag = 1;
-var csvList = new Array();
-var dataList = new Array();
 var redColorList = ['#FFEBEE','#FFCDD2','#EF9A9A','#E57373','#EF5350','#F44336','#E53935','#D32F2F','#C62828','#B71C1C'];
 var blueColorList = ['#E3F2FD','#BBDEFB','#90CAF9','#64B5F6','#42A5F5','#2196F3','#1E88E5','#1976D2','#1565C0','#0D47A1'];
 var greenColorList = ['#E8F5E9','#C8E6C9','#A5D6A7','#81C784','#66BB6A','#4CAF50','#43A047','#388E3C','#2E7D32','#1B5E20'];
@@ -8,31 +6,34 @@ var greenColorList = ['#E8F5E9','#C8E6C9','#A5D6A7','#81C784','#66BB6A','#4CAF50
 $(function(){
 
 	function item001BackGroundColor () {
-		if (dataList[dataList.length-2][2] < 0) {
+
+		var valueClass = document.getElementsByClassName('valueArea');		
+
+		if (valueClass[0].innerHTML < 0) {
 			$('#value').css('background',redColorList[0]);
-		} else if(dataList[dataList.length-2][2] >= 0 && dataList[dataList.length-2][2] < 5) {
+		} else if(valueClass[0].innerHTML >= 0 && valueClass[0].innerHTML < 5) {
 			$('#value').css('background',redColorList[1]);                
-		} else if(dataList[dataList.length-2][2] >= 5 && dataList[dataList.length-2][2] < 10) {
+		} else if(valueClass[0].innerHTML >= 5 && valueClass[0].innerHTML < 10) {
 			$('#value').css('background',redColorList[2]);
-		} else if(dataList[dataList.length-2][2] >= 10 && dataList[dataList.length-2][2] < 15) {
+		} else if(valueClass[0].innerHTML >= 10 && valueClass[0].innerHTML < 15) {
 			$('#value').css('background',redColorList[3]);
-		} else if(dataList[dataList.length-2][2] >= 15 && dataList[dataList.length-2][2] < 20) {
+		} else if(valueClass[0].innerHTML >= 15 && valueClass[0].innerHTML < 20) {
 			$('#value').css('background',redColorList[4]);
-		} else if(dataList[dataList.length-2][2] >= 20 && dataList[dataList.length-2][2] < 25) {
+		} else if(valueClass[0].innerHTML >= 20 && valueClass[0].innerHTML < 25) {
 			$('#value').css('background',redColorList[5]);
-		} else if(dataList[dataList.length-2][2] >= 25 && dataList[dataList.length-2][2] < 30) {
+		} else if(valueClass[0].innerHTML >= 25 && valueClass[0].innerHTML < 30) {
 			$('#value').css('background',redColorList[6]);
-		} else if(dataList[dataList.length-2][2] >= 30 && dataList[dataList.length-2][2] < 35) {
+		} else if(valueClass[0].innerHTML >= 30 && valueClass[0].innerHTML < 35) {
 			$('#value').css('background',redColorList[7]);
-		} else if(dataList[dataList.length-2][2] >= 35 && dataList[dataList.length-2][2] < 40) {
+		} else if(valueClass[0].innerHTML >= 35 && valueClass[0].innerHTML < 40) {
 			$('#value').css('background',redColorList[8]);
-		} else if(dataList[dataList.length-2][2] >= 40) {
+		} else if(valueClass[0].innerHTML >= 40) {
 			$('#value').css('background',redColorList[9]);
 		} else {
 			$('#value').css('background',redColorList[5]);                
 		}
 
-		if (dataList[dataList.length-2][2] < 15) {
+		if (valueClass[0].innerHTML < 15) {
 			$('#value').css('color','#000000');                            
 		} else {
 			$('#value').css('color','#FFFFFF');            
@@ -40,31 +41,34 @@ $(function(){
 	}
 
 	function item002BackGroundColor () {
-		if (dataList[dataList.length-2][3] >= 0 && dataList[dataList.length-2][3] < 10) {
+
+		var valueClass = document.getElementsByClassName('valueArea');		
+
+		if (valueClass[0].innerHTML >= 0 && valueClass[0].innerHTML < 10) {
 			$('#value').css('background',blueColorList[0]);
-		} else if(dataList[dataList.length-2][3] >= 10 && dataList[dataList.length-2][3] < 20) {
+		} else if(valueClass[0].innerHTML >= 10 && valueClass[0].innerHTML < 20) {
 			$('#value').css('background',blueColorList[1]);                
-		} else if(dataList[dataList.length-2][3] >= 20 && dataList[dataList.length-2][3] < 30) {
+		} else if(valueClass[0].innerHTML >= 20 && valueClass[0].innerHTML < 30) {
 			$('#value').css('background',blueColorList[2]);
-		} else if(dataList[dataList.length-2][3] >= 30 && dataList[dataList.length-2][3] < 40) {
+		} else if(valueClass[0].innerHTML >= 30 && valueClass[0].innerHTML < 40) {
 			$('#value').css('background',blueColorList[3]);
-		} else if(dataList[dataList.length-2][3] >= 40 && dataList[dataList.length-2][3] < 50) {
+		} else if(valueClass[0].innerHTML >= 40 && valueClass[0].innerHTML < 50) {
 			$('#value').css('background',blueColorList[4]);
-		} else if(dataList[dataList.length-2][3] >= 50 && dataList[dataList.length-2][3] < 60) {
+		} else if(valueClass[0].innerHTML >= 50 && valueClass[0].innerHTML < 60) {
 			$('#value').css('background',blueColorList[5]);
-		} else if(dataList[dataList.length-2][3] >= 60 && dataList[dataList.length-2][3] < 70) {
+		} else if(valueClass[0].innerHTML >= 60 && valueClass[0].innerHTML < 70) {
 			$('#value').css('background',blueColorList[6]);
-		} else if(dataList[dataList.length-2][3] >= 70 && dataList[dataList.length-2][3] < 70) {
+		} else if(valueClass[0].innerHTML >= 70 && valueClass[0].innerHTML < 70) {
 			$('#value').css('background',blueColorList[7]);
-		} else if(dataList[dataList.length-2][3] >= 80 && dataList[dataList.length-2][3] < 90) {
+		} else if(valueClass[0].innerHTML >= 80 && valueClass[0].innerHTML < 90) {
 			$('#value').css('background',blueColorList[8]);
-		} else if(dataList[dataList.length-2][3] >= 40) {
+		} else if(valueClass[0].innerHTML >= 40) {
 			$('#value').css('background',blueColorList[9]);
 		} else {
 			$('#value').css('background',blueColorList[5]);                
 		}
 
-		if (dataList[dataList.length-2][3] < 50) {
+		if (valueClass[0].innerHTML < 50) {
 			$('#value').css('color','#000000');                            
 		} else {
 			$('#value').css('color','#FFFFFF');            
@@ -72,51 +76,41 @@ $(function(){
 	}
 
 	function item003BackGroundColor () {
-		if (dataList[dataList.length-2][1] < 920) {
+
+		var valueClass = document.getElementsByClassName('valueArea');		
+
+		if (valueClass[0].innerHTML < 920) {
 			$('#value').css('background',greenColorList[0]);
-		} else if(dataList[dataList.length-2][1] >= 920 && dataList[dataList.length-2][1] < 930) {
+		} else if(valueClass[0].innerHTML >= 920 && valueClass[0].innerHTML < 930) {
 			$('#value').css('background',greenColorList[1]);                
-		} else if(dataList[dataList.length-2][1] >= 930 && dataList[dataList.length-2][1] < 940) {
+		} else if(valueClass[0].innerHTML >= 930 && valueClass[0].innerHTML < 940) {
 			$('#value').css('background',greenColorList[2]);
-		} else if(dataList[dataList.length-2][1] >= 940 && dataList[dataList.length-2][1] < 950) {
+		} else if(valueClass[0].innerHTML >= 940 && valueClass[0].innerHTML < 950) {
 			$('#value').css('background',greenColorList[3]);
-		} else if(dataList[dataList.length-2][1] >= 950 && dataList[dataList.length-2][1] < 960) {
+		} else if(valueClass[0].innerHTML >= 950 && valueClass[0].innerHTML < 960) {
 			$('#value').css('background',greenColorList[4]);
-		} else if(dataList[dataList.length-2][1] >= 960 && dataList[dataList.length-2][1] < 970) {
+		} else if(valueClass[0].innerHTML >= 960 && valueClass[0].innerHTML < 970) {
 			$('#value').css('background',greenColorList[5]);
-		} else if(dataList[dataList.length-2][1] >= 970 && dataList[dataList.length-2][1] < 980) {
+		} else if(valueClass[0].innerHTML >= 970 && valueClass[0].innerHTML < 980) {
 			$('#value').css('background',greenColorList[6]);
-		} else if(dataList[dataList.length-2][1] >= 980 && dataList[dataList.length-2][1] < 990) {
+		} else if(valueClass[0].innerHTML >= 980 && valueClass[0].innerHTML < 990) {
 			$('#value').css('background',greenColorList[7]);
-		} else if(dataList[dataList.length-2][1] >= 990 && dataList[dataList.length-2][1] < 1000) {
+		} else if(valueClass[0].innerHTML >= 990 && valueClass[0].innerHTML < 1000) {
 			$('#value').css('background',greenColorList[8]);
-		} else if(dataList[dataList.length-2][1] > 1000) {
+		} else if(valueClass[0].innerHTML > 1000) {
 			$('#value').css('background',greenColorList[9]);
 		} else {
 			$('#value').css('background',greenColorList[5]);                
 		}
 
-		if (dataList[dataList.length-2][1] <= 960) {
+		if (valueClass[0].innerHTML <= 960) {
 			$('#value').css('color','#000000');                            
 		} else {
 			$('#value').css('color','#FFFFFF');            
 		}
 	}
 
-	$.ajax({
-		url:'csv/20160823.csv',
-		success: function(data) {
-			csvList = data.split("\n");
-			for(var i = 0; i < csvList.length; i++) {
-				
-				dataList[i] = csvList[i].split(",");
-			}
-
-			$('#value').text(dataList[dataList.length-2][2]);
-			
-			item001BackGroundColor();
-		}
-	});
+	item001BackGroundColor();
 
 	$('#item001').hover(function() {
 		if(flag != 1) {
@@ -165,7 +159,7 @@ $(function(){
 		$(this).css('background','#d32f2f');
 		$('#item002').css('background','#bdbdbd');
 		$('#item003').css('background','#bdbdbd');
-		$('#value').text(dataList[dataList.length-2][2]);
+		$('#value').text(array[2]);
 		item001BackGroundColor();
 		
 	});
@@ -175,7 +169,7 @@ $(function(){
 		$(this).css('background','#2196F3');
 		$('#item001').css('background','#bdbdbd');
 		$('#item003').css('background','#bdbdbd');
-		$('#value').text(dataList[dataList.length-2][3]);
+		$('#value').text(array[3]);		
 		item002BackGroundColor();
 	});
 
@@ -184,7 +178,7 @@ $(function(){
 		$(this).css('background','#4CAF50');
 		$('#item001').css('background','#bdbdbd');
 		$('#item002').css('background','#bdbdbd');
-		$('#value').text(dataList[dataList.length-2][1]);
+		$('#value').text(array[1]);		
 		item003BackGroundColor();
 	});
 

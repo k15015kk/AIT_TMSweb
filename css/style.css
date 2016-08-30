@@ -43,15 +43,11 @@ li{
     padding: 5px;
 }
 
-#icon001 ,
-#icon002 ,
-#icon003 {
+.itemIcon01{
     font-size: 34px;
 }
 
-#icontext001 ,
-#icontext002 ,
-#icontext003 {
+.itemIcon02 {
     font-size: 13px;
 }
 
@@ -72,18 +68,18 @@ div.displayArea {
     margin-right: 10vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    color: #fff;      
+    color: #fff;
 }
 
 div.area {
-    display: table-cell;
     vertical-align: middle;
     border: solid;
     border-color: #212121;
     border-width: 5px;
+    display: table-cell;
 }
 
-#infomationArea {
+#infomation001 {
     background: #212121;
     width: 50vw;    
 }
@@ -95,7 +91,7 @@ div.area {
     text-align: center;
 }
 
-#valueArea {
+#value001 {
     background: #d32f2f;
     width: 30vw;  
 }
@@ -130,7 +126,7 @@ div.area {
         display: block;
     }
 
-    #infomationArea {
+    #infomation001 {
         width: 80vw;
     }
 
@@ -139,7 +135,7 @@ div.area {
         width: 80vw;
     }
 
-    #valueArea {
+    #value001 {
         width: 80vw;
     }
 }
