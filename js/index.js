@@ -3,6 +3,8 @@ var dataLength = 2;
 
 $(function(){
 
+	setTimeout("location.reload()",time);
+
 	function item001BackGroundColor () {
 
 		var valueClass = document.getElementsByClassName('valueArea');		
