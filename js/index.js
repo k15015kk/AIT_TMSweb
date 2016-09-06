@@ -198,4 +198,8 @@ $(function(){
 	},function() {
 		$(this).fadeTo("fast",1.0);        
 	});
+
+	$('#display001').click(function() {
+		window.open("4b310/setcsv.php");
+	});
 });

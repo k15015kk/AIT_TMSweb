@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
 	<?php
+		set_time_limit(10);
+
+		//タイムゾーン取得
 		date_default_timezone_set('Asia/Tokyo');
+
+		//日付設定
 		$date = new DateTime();
 		$date->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 
+		//分・秒取得
 		$minitue = $date->format('i');
 		$second = $date->format('s');
 
-		$filepath = 'http://172.16.0.210/'.$date->format('Ymd').".csv";
+		//csvファイル名を変数に格納
+		$filepath = 'http://set1.ie.aitech.ac.jp/comfortableIoT/'.$date->format('Ymd').".csv";
+		//ファイルが無かったらError表示
 		if (($fp = fopen($filepath, "r")) === false) {
 			echo 'error';
+		//見つかったCSV処理
+		} else {
+			setlocale(LC_ALL, 'ja_JP');
+			$dataArray01 = array();
+
+			$i=0;
+			while (($line = fgetcsv($fp)) !== FALSE) {
+				mb_convert_variables('UTF-8', 'sjis-win', $line);
+				
+				$dataArray01 = $line;
+				$i++;
+			}
+
+			fclose($fp);
 		}
-
-		setlocale(LC_ALL, 'ja_JP');
-		$dataArray01 = array();
-
-		$i=0;
-		while (($line = fgetcsv($fp)) !== FALSE) {
-			mb_convert_variables('UTF-8', 'sjis-win', $line);
-			
-			$dataArray01 = $line;
-			$i++;
-		}
-
-		fclose($fp);
 	?>
 	<?php
 		$filepath = 'http://172.16.0.210/'.$date->format('Ymd').".csv";
 		if (($fp = fopen($filepath, "r")) === false) {
 			echo 'error';
+		} else {
+			setlocale(LC_ALL, 'ja_JP');
+			$dataArray02 = array();
+
+			$i=0;
+			while (($line = fgetcsv($fp)) !== FALSE) {
+				mb_convert_variables('UTF-8', 'sjis-win', $line);
+				
+				$dataArray02 = $line;
+				$i++;
+			}
+
+			fclose($fp);
 		}
-
-		setlocale(LC_ALL, 'ja_JP');
-		$dataArray02 = array();
-
-		$i=0;
-		while (($line = fgetcsv($fp)) !== FALSE) {
-			mb_convert_variables('UTF-8', 'sjis-win', $line);
-			
-			$dataArray02 = $line;
-			$i++;
-		}
-
-		fclose($fp);
 	?>
 	<head>
 		<title>シス研温度管理システム</title>
@@ -102,7 +111,7 @@
 					<p class="valueArea" id="value002">
 						<?php
 							echo $dataArray02[2];
-?>
+						?>
 					</p>
 				</div>
 			</div>

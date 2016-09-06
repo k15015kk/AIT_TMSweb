@@ -129,14 +129,14 @@ p.valueArea {
     #titleText {
         padding-left: 0px;
         text-align: center;
-        width: 100vw;
+        width: auto;
     }
 
     #timeText {
-        padding-left: 0px;
+        padding-right: 0px;
         font-size: 13px;
         text-align: center;
-        width: 100vw;
+        width: auto;
     }
 
     li {

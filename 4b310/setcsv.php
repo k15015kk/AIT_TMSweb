@@ -1,0 +1,200 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+//自動更新
+var term = 10*60000;
+setTimeout("location.reload();",term-Date.now()%term+10000);
+</script>
+	<script>
+function DataRead(){
+<?php
+if(($fp = fopen("http://set1.ie.aitech.ac.jp/comfortableIoT/".date(Ymd).".csv", "r")) === false){
+    exit(1);//エラー処理
+}
+// CSVの中身がダブルクオーテーションで囲われていない場合に一文字目が化けるのを回避
+setlocale(LC_ALL, 'ja_JP');
+
+$i = 0;
+
+while(($line = fgetcsv($fp)) !== FALSE){
+	mb_convert_variables('UTF-8', 'sjis-win', $line);
+    	if($i == 0){
+        	$header = $line;
+        	$i++;
+        	continue;
+    	}
+    	$data[] = $line;
+
+    	$i++;
+}
+fclose($fp);
+$length = sizeof($data);
+?>
+}
+</script>
+	<!-- AJAX API のロード -->
+	<script type="text/javascript" src="https://www.google.com/jsapi">
+</script>
+	<script type="text/javascript">
+
+// Visualization API と折れ線グラフ用のパッケージのロード
+google.load("visualization", "1", {packages:["corechart"]});
+var chart1;
+var options1;
+var data1;
+var chart2;
+var options2;
+var data2;
+var chart3;
+var options3;
+var data3;
+
+// Google Visualization API ロード時のコールバック関数の設定
+google.setOnLoadCallback(drawChart1);
+
+//Date format統一
+function toLocaleString(date)
+{
+    	return [
+        date.getFullYear(),
+        date.getMonth() + 1,
+    	date.getDate()
+	].join( '/' ) + ' ';
+}
+
+// グラフ作成用のコールバック関数
+function drawChart1(){
+
+	// データテーブルの作成
+	data1 = google.visualization.arrayToDataTable([
+	['時間', '温度'],
+	<?php
+	$num = 0;
+	foreach($data as $value){
+		echo '['.$value[0].','.$value[2].']';
+		$num++;
+		if($num !== $length){
+			echo ",\n";
+		}
+	}
+	?>
+	]);
+
+	// グラフのオプションを設定
+	options1 = {
+		title: '気温(℃)',
+		colors: ['FF0000'],
+		legend:{position: 'none'},
+		hAxis: {title: toLocaleString(new Date()),
+			textStyle:{
+				fontSize:12
+			},
+		slantedText:true
+		}
+	};
+
+	// LineChart のオブジェクトの作成
+	chart1 = new google.visualization.LineChart(document.getElementById('chart_div1'));
+	// データテーブルとオプションを渡して、グラフを描画
+	chart1.draw(data1, options1);
+}
+
+google.load("visualization", "1", {packages:["corechart"]});
+	
+google.setOnLoadCallback(drawChart2);
+function drawChart2(){
+
+        // データテーブルの作成
+        data2 = google.visualization.arrayToDataTable([
+        ['時間', '湿度'],
+        <?php
+	$num = 0;
+	foreach($data as $value){
+		echo '['.$value[0].','.$value[3].']';
+		$num++;
+		if($num !== $length){
+			echo ",\n";
+		}
+	}
+	?>
+        ]);
+
+        // グラフのオプションを設定
+        options2 = {
+		title: '湿度(％)',
+		legend:{position: 'none'},
+		hAxis: {title: toLocaleString(new Date()),
+			textStyle:{
+				fontSize:12
+			},
+			slantedText:true
+		}
+        };
+
+        // LineChart のオブジェクトの作成
+        chart2 = new google.visualization.LineChart(document.getElementById('chart_div2'));
+        // データテーブルとオプションを渡して、グラフを描画
+        chart2.draw(data2, options2);
+}
+google.load("visualization", "1", {packages:["corechart"]});
+	
+google.setOnLoadCallback(drawChart3);
+function drawChart3(){
+        // データテーブルの作成
+        data3 = google.visualization.arrayToDataTable([
+	['時間', '気圧'],
+	<?php
+	$num = 0;
+	foreach($data as $value){
+		echo '['.$value[0].','.$value[1].']';
+		$num++;
+		if($num !== $length){
+			echo ",\n";
+		}
+	}
+	?>
+        ]);
+
+        // グラフのオプションを設定
+        options3 = {
+		title: '気圧(hPa)',
+		colors:['00FF00'],
+		legend:{position: 'none'},
+		hAxis: {title: toLocaleString(new Date()),
+			textStyle:{
+				fontSize:12
+			},
+		slantedText:true
+		}
+        };
+
+        // LineChart のオブジェクトの作成
+        chart3 = new google.visualization.LineChart(document.getElementById('chart_div3'));
+        // データテーブルとオプションを渡して、グラフを描画
+        chart3.draw(data3, options3);
+}
+</script>
+</head>
+
+<body onresize="chart1.draw(data1, options1);chart2.draw(data2, options2);chart3.draw(data3, options3);">
+
+	<h1>４号館別館310</h1>
+
+	<style>
+		h1 {
+			text-align: center;
+		}
+	</style>
+
+	<!-- グラフを描くdiv -->
+	<div id="chart_div1" style="width: 100%; height: 250px;"></div>
+	<div id="chart_div2" style="width: 100%; height: 250px;"></div>
+	<div id="chart_div3" style="width: 100%; height: 250px;"></div>
+	<div Align="right" style="margin-right:80px">
+		<a href="history/SET3-1.php">過去ログ</a>
+	</div>
+</body>
+
+</html>
