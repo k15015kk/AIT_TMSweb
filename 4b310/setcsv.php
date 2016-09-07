@@ -3,37 +3,54 @@
 <head>
 	<meta charset="utf-8">
 	<script type="text/javascript">
-//自動更新
-var term = 10*60000;
-setTimeout("location.reload();",term-Date.now()%term+10000);
-</script>
-	<script>
-function DataRead(){
+	//自動更新
+		var term = 10*60000;
+		setTimeout("location.reload();",term-Date.now()%term+10000);
+	</script>
 <?php
-if(($fp = fopen("http://set1.ie.aitech.ac.jp/comfortableIoT/".date(Ymd).".csv", "r")) === false){
-    exit(1);//エラー処理
-}
-// CSVの中身がダブルクオーテーションで囲われていない場合に一文字目が化けるのを回避
-setlocale(LC_ALL, 'ja_JP');
+	//タイムゾーン取得
+	date_default_timezone_set('Asia/Tokyo');
 
-$i = 0;
+	//日付設定
+	$date = new DateTime();
+	$date->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 
-while(($line = fgetcsv($fp)) !== FALSE){
-	mb_convert_variables('UTF-8', 'sjis-win', $line);
-    	if($i == 0){
-        	$header = $line;
-        	$i++;
-        	continue;
-    	}
-    	$data[] = $line;
+	$yestaday = $date->format('d') - 1;
 
-    	$i++;
-}
-fclose($fp);
-$length = sizeof($data);
+	if(($fp = fopen("http://set1.ie.aitech.ac.jp/comfortableIoT/".$date->format('Ym').sprintf("%02d",$yestaday).".csv", "r")) === false){
+		exit(1);//エラー処理
+	}
+
+	// CSVの中身がダブルクオーテーションで囲われていない場合に一文字目が化けるのを回避
+	setlocale(LC_ALL, 'ja_JP');
+
+	$i = 0;
+	$hour = $date->format('H') * 6;
+	$minitue = $date->format('i') / 10;
+
+	$start = $hour + $minitue;
+
+	while(($line = fgetcsv($fp)) !== FALSE){
+		if($i > $start) {
+			mb_convert_variables('UTF-8', 'sjis-win', $line);
+			$data[] = $line;
+		}
+
+		$i++;
+	}
+
+	if(($fp = fopen("http://set1.ie.aitech.ac.jp/comfortableIoT/".$date->format('Ymd').".csv", "r")) === false){
+		exit(1);//エラー処理
+	}
+
+	while(($line = fgetcsv($fp)) !== FALSE){
+		mb_convert_variables('UTF-8', 'sjis-win', $line);
+			$data[] = $line;
+	}
+
+	fclose($fp);
+	$length = sizeof($data);
 ?>
-}
-</script>
 	<!-- AJAX API のロード -->
 	<script type="text/javascript" src="https://www.google.com/jsapi">
 </script>
@@ -53,16 +70,6 @@ var data3;
 
 // Google Visualization API ロード時のコールバック関数の設定
 google.setOnLoadCallback(drawChart1);
-
-//Date format統一
-function toLocaleString(date)
-{
-    	return [
-        date.getFullYear(),
-        date.getMonth() + 1,
-    	date.getDate()
-	].join( '/' ) + ' ';
-}
 
 // グラフ作成用のコールバック関数
 function drawChart1(){
@@ -87,7 +94,7 @@ function drawChart1(){
 		title: '気温(℃)',
 		colors: ['FF0000'],
 		legend:{position: 'none'},
-		hAxis: {title: toLocaleString(new Date()),
+		hAxis: {title: "過去24時間分",
 			textStyle:{
 				fontSize:12
 			},
@@ -125,7 +132,7 @@ function drawChart2(){
         options2 = {
 		title: '湿度(％)',
 		legend:{position: 'none'},
-		hAxis: {title: toLocaleString(new Date()),
+		hAxis: {title: "過去24時間分",
 			textStyle:{
 				fontSize:12
 			},
@@ -162,7 +169,7 @@ function drawChart3(){
 		title: '気圧(hPa)',
 		colors:['00FF00'],
 		legend:{position: 'none'},
-		hAxis: {title: toLocaleString(new Date()),
+		hAxis: {title: "過去24時間分",
 			textStyle:{
 				fontSize:12
 			},

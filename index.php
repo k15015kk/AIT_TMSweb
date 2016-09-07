@@ -18,41 +18,42 @@
 		$filepath = 'http://set1.ie.aitech.ac.jp/comfortableIoT/'.$date->format('Ymd').".csv";
 		//ファイルが無かったらError表示
 		if (($fp = fopen($filepath, "r")) === false) {
-			echo 'error';
+			echo exit(1);
 		//見つかったCSV処理
-		} else {
-			setlocale(LC_ALL, 'ja_JP');
-			$dataArray01 = array();
-
-			$i=0;
-			while (($line = fgetcsv($fp)) !== FALSE) {
-				mb_convert_variables('UTF-8', 'sjis-win', $line);
-				
-				$dataArray01 = $line;
-				$i++;
-			}
-
-			fclose($fp);
 		}
+
+		setlocale(LC_ALL, 'ja_JP');
+		$dataArray01 = array();
+
+		$i=0;
+		while (($line = fgetcsv($fp)) !== FALSE) {
+			mb_convert_variables('UTF-8', 'sjis-win', $line);
+				
+			$dataArray01 = $line;
+			$i++;
+		}
+
+		fclose($fp);
 	?>
 	<?php
-		$filepath = 'http://172.16.0.210/'.$date->format('Ymd').".csv";
+		$filepath = 'http://set1.ie.aitech.ac.jp/comfortableIoT/'.$date->format('Ymd').".csv";
 		if (($fp = fopen($filepath, "r")) === false) {
-			echo 'error';
-		} else {
-			setlocale(LC_ALL, 'ja_JP');
-			$dataArray02 = array();
-
-			$i=0;
-			while (($line = fgetcsv($fp)) !== FALSE) {
-				mb_convert_variables('UTF-8', 'sjis-win', $line);
-				
-				$dataArray02 = $line;
-				$i++;
-			}
-
-			fclose($fp);
+			echo exit(1);
 		}
+
+		setlocale(LC_ALL, 'ja_JP');
+		$dataArray02 = array();
+
+		$i=0;
+		while (($line = fgetcsv($fp)) !== FALSE) {
+			mb_convert_variables('UTF-8', 'sjis-win', $line);
+			
+			$dataArray02 = $line;
+			$i++;
+		}
+
+		fclose($fp);
+
 	?>
 	<head>
 		<title>シス研温度管理システム</title>

@@ -194,12 +194,13 @@ $(function(){
 	});
 
 	$('.displayArea').hover(function() {
-		$(this).fadeTo("fast",0.67);
+		$(this).fadeTo(0,0.6);
 	},function() {
-		$(this).fadeTo("fast",1.0);        
+		$(this).fadeTo(0,1.0);        
 	});
 
 	$('#display001').click(function() {
 		window.open("4b310/setcsv.php");
+		$(this).fadeTo(0,1.0);	
 	});
 });
