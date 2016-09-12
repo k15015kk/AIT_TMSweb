@@ -59,6 +59,10 @@
 		<title>シス研温度管理システム</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="システム工学研究会の部室の温度管理システムです">
+		<meta name="keyword" content="愛知工業大学,システム工学研究会,気温,温度,湿度,気圧,工科展2016">
+		<meta propery="og:type" content="website">
+		<meta propery="og:site_name" content="愛工大シス研 温度管理システム">
 		<link href="css/style.css" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	</head>
