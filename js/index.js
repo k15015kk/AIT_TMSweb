@@ -42,7 +42,6 @@ $(function(){
 		}
 	}
 		
-
 	function item002BackGroundColor () {
 
 		var valueClass = document.getElementsByClassName('valueArea');		
